@@ -11,9 +11,9 @@ class SplashCubit extends Cubit<SplashState> {
     emit(SplashLoading());
 
     Future.delayed(
-      const Duration(seconds: 2),
+      const Duration(seconds: 5),
       () {
-        // GoRouter.of(context).pushReplacement('/home');
+        GoRouter.of(context).pushReplacement('/home');
         emit(SplashNavigationComplete());
       },
     );

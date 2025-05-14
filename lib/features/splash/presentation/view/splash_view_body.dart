@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:labnova/core/utils/styles.dart';
 
 import '../../../../core/constants/assets_const.dart';
 import '../../../../core/utils/widgets/custom_loading_widget.dart';
@@ -103,14 +104,10 @@ class _SplashViewBodyState extends State<SplashViewBody>
                           opacity: _textOpacityAnimation.value,
                           child: Text(
                             "Labnova",
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleLarge!
-                                .copyWith(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
-                                  fontSize: 64,
-                                ),
+                            style: TextThemes.titleLarge.copyWith(
+                              color: Colors.white,
+                              fontSize: 64,
+                            ),
                           ),
                         );
                       },
@@ -120,14 +117,18 @@ class _SplashViewBodyState extends State<SplashViewBody>
                 const SizedBox(height: 16),
                 Padding(
                   padding: const EdgeInsets.all(16),
-                  child: Text(
-                    "Labnova votre solution de gestion de laboratoire de recherche et développement d'innovation en ligne pour les étudiants et les enseignants",
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                          fontFamily: 'Poppins',
-                          color: Colors.white,
-                          fontSize: 16,
+                  child: AnimatedBuilder(
+                    animation: _animationController,
+                    builder: (context, child) {
+                      return Opacity(
+                        opacity: _textOpacityAnimation.value,
+                        child: Text(
+                          "Labnova votre solution de gestion de laboratoire de recherche et développement d'innovation en ligne pour les étudiants et les enseignants",
+                          textAlign: TextAlign.center,
+                          style: TextThemes.TextStyle16,
                         ),
+                      );
+                    },
                   ),
                 ),
                 const SizedBox(height: 32),

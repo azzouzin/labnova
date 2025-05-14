@@ -5,20 +5,21 @@ class AppTheme {
   static ThemeData lightTheme = ThemeData(
     primaryColor: Color(0xff61F2F5),
     scaffoldBackgroundColor: Color.fromARGB(255, 255, 255, 255),
-    fontFamily: 'GTSectra',
-    textTheme: const TextTheme(
-      displayLarge: TextStyle(
-        fontSize: 32,
-        fontWeight: FontWeight.bold,
-        color: Colors.black,
-      ),
-      bodyLarge: TextStyle(
-        fontSize: 16,
-        color: Colors.black87,
-      ),
-      bodyMedium: TextStyle(
-        fontSize: 14,
-        color: Colors.black54,
+    textTheme: GoogleFonts.poppinsTextTheme(
+      const TextTheme(
+        displayLarge: TextStyle(
+          fontSize: 32,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+        ),
+        bodyLarge: TextStyle(
+          fontSize: 16,
+          color: Colors.black87,
+        ),
+        bodyMedium: TextStyle(
+          fontSize: 14,
+          color: Colors.black54,
+        ),
       ),
     ),
     colorScheme: ColorScheme.fromSeed(
@@ -31,8 +32,7 @@ class AppTheme {
   static ThemeData darkTheme = ThemeData(
     primaryColor: Colors.blue,
     scaffoldBackgroundColor: Color(0xff100B20),
-    fontFamily: 'Roboto',
-    textTheme: GoogleFonts.montserratTextTheme(
+    textTheme: GoogleFonts.poppinsTextTheme(
       TextTheme(
         displayLarge: TextStyle(
           fontSize: 32,
