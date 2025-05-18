@@ -14,7 +14,7 @@ class SplashCubit extends Cubit<SplashState> {
     Future.delayed(
       const Duration(seconds: 5),
       () {
-        GoRouter.of(context).pushReplacement(kAuthView);
+        GoRouter.of(context).pushReplacement(kHomeView);
         emit(SplashNavigationComplete());
       },
     );

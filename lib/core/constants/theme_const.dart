@@ -64,3 +64,4 @@ class AppTheme {
 String kHomeView = '/home';
 String kAuthView = '/auth';
 String kOtpView = '/otp';
+String kCongrats = '/congrats';

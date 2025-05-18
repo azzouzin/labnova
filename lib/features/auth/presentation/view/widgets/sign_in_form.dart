@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:labnova/core/utils/widgets/custom_button.dart';
 
+import '../../../../../core/constants/theme_const.dart';
 import '../../../../../core/utils/styles.dart';
 import '../../../../../core/utils/widgets/custom_text_field.dart';
 import '../../view_model/cubit/auth_cubit.dart';
@@ -45,7 +47,12 @@ class SignInForm extends StatelessWidget {
               onTap: () {},
             ),
             Gap(10),
-            CustomButton(onPressed: () {}, text: "Se connecter"),
+            CustomButton(
+                onPressed: () {
+                  print("HI");
+                  GoRouter.of(context).push(kHomeView);
+                },
+                text: "Se connecter"),
             Column(
               children: [
                 Text(

@@ -20,7 +20,17 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
+  void switchOTP() {
+    emit(AuthEnterOTP());
+  }
+
   void signUp(BuildContext context) {
+    emit(AuthEnterPhone());
     GoRouter.of(context).push(kOtpView);
+  }
+
+  void seccessOTP(BuildContext context) {
+    emit(AuthSignIN());
+    GoRouter.of(context).push(kAuthView);
   }
 }
