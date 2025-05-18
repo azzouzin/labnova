@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:labnova/features/auth/presentation/view/confirm_otp.dart';
+import 'package:labnova/features/auth/presentation/view/sign_up_view.dart';
 import '../../features/home/data/model/book_model.dart';
 import '../../features/home/data/repo/home_repo_impl.dart';
 import '../../features/home/presentation/view/home_view.dart';
@@ -39,6 +41,22 @@ abstract class AppRouter {
             pageBuilder: (context, state) => CustomTransitionPage(
               key: state.pageKey,
               child: const HomeView(),
+              transitionsBuilder: CustomPageTransitions.slideTransition,
+            ),
+          ),
+          GoRoute(
+            path: kAuthView,
+            pageBuilder: (context, state) => CustomTransitionPage(
+              key: state.pageKey,
+              child: const SignUpView(),
+              transitionsBuilder: CustomPageTransitions.slideTransition,
+            ),
+          ),
+          GoRoute(
+            path: kOtpView,
+            pageBuilder: (context, state) => CustomTransitionPage(
+              key: state.pageKey,
+              child: const ConfirmOtp(),
               transitionsBuilder: CustomPageTransitions.slideTransition,
             ),
           ),

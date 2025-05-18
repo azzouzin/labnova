@@ -25,21 +25,6 @@ class _SplashViewBodyState extends State<SplashViewBody>
   void initState() {
     super.initState();
     _initAnimations();
-    _navigateToHome();
-  }
-
-  void _navigateToHome() {
-    // Wait for the animation to complete before navigating
-    _animationController.addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
-        // Future.delayed(const Duration(milliseconds: 500), () {
-        //   if (mounted) {
-        //     context.go(
-        //         '/home'); // Use context.go instead of GoRouter.of(context).pushReplacement
-        //   }
-        // });
-      }
-    });
   }
 
   void _initAnimations() {

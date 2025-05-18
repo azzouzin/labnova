@@ -23,10 +23,10 @@ class AppTheme {
       ),
     ),
     colorScheme: ColorScheme.fromSeed(
-      seedColor: Color(0xffE0E0E0),
-      primary: Colors.blue,
-      secondary: Color(0xff723881),
-    ),
+        seedColor: Color(0xffE0E0E0),
+        primary: Color(0xff723881),
+        secondary: Color(0xffD5BADB),
+        shadow: Color(0xff595959)),
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -62,3 +62,5 @@ class AppTheme {
 }
 
 String kHomeView = '/home';
+String kAuthView = '/auth';
+String kOtpView = '/otp';

@@ -7,10 +7,21 @@ abstract class TextThemes {
     fontWeight: FontWeight.bold,
     fontFamily: 'Poppins',
   );
+  static TextStyle TextStyle24 = GoogleFonts.poppins(
+    fontSize: 24,
+    fontWeight: FontWeight.w500,
+    color: Color(0xff595959),
+    letterSpacing: 2,
+  );
   static TextStyle TextStyle18 = GoogleFonts.poppins(
     fontSize: 18,
     fontWeight: FontWeight.w600,
     color: Colors.white,
+  );
+  static TextStyle TextStyle20 = GoogleFonts.poppins(
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+    color: Color(0xff595959),
   );
   static TextStyle TextStyle16 = GoogleFonts.poppins(
     fontSize: 16,
@@ -19,7 +30,7 @@ abstract class TextThemes {
   );
   static TextStyle TextStyle14 = GoogleFonts.poppins(
     fontSize: 14,
-    fontWeight: FontWeight.w500,
-    color: Colors.white,
+    fontWeight: FontWeight.w400,
+    color: Color(0xff8C8C8C),
   );
 }
