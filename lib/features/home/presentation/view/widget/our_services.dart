@@ -53,7 +53,10 @@ class OurServices extends StatelessWidget {
               separatorBuilder: (context, index) => Gap(5),
               itemBuilder: (context, index) {
                 return InkWell(
-                  onTap: () => GoRouter.of(context).push(kWorkers),
+                  onTap: () => GoRouter.of(context).push(
+                    kWorkers,
+                    extra: services[index].name,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

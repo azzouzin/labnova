@@ -7,16 +7,19 @@ class CustomTextField extends StatelessWidget {
     this.controller,
     this.hintText,
     this.labelText,
+    this.obscureText = false,
     this.keyboardType,
   });
   final TextEditingController? controller;
   final String? hintText;
   final String? labelText;
+  final bool obscureText;
   final TextInputType? keyboardType;
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
+      obscureText: obscureText,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: TextThemes.TextStyle16.copyWith(color: Colors.grey),

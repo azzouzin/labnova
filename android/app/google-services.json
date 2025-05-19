@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "299696179837",
+    "project_id": "sokardz-debb9",
+    "storage_bucket": "sokardz-debb9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:299696179837:android:41f2c3da7dbca5a9543f14",
+        "android_client_info": {
+          "package_name": "com.example.labnova"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmcdgvaDGt46eFVb01qjvDJQ_g4AdS8UI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:299696179837:android:2c435bda2af32ca0543f14",
+        "android_client_info": {
+          "package_name": "com.example.sugar_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmcdgvaDGt46eFVb01qjvDJQ_g4AdS8UI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

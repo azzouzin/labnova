@@ -122,7 +122,7 @@ abstract class AppRouter {
               key: state.pageKey,
               child: BlocProvider(
                 create: (context) => AppoitmentCubit(),
-                child: WorkersView(),
+                child: WorkersView(title: state.extra as String),
               ),
               transitionsBuilder: CustomPageTransitions.slideTransition,
             ),

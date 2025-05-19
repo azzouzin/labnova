@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -5,8 +6,10 @@ import 'core/constants/theme_const.dart';
 import 'core/utils/app_router.dart';
 import 'core/utils/service_locator.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   setupServiceLocator();
+  await Firebase.initializeApp();
   runApp(const LabNovaApp());
 }
 
