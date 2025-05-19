@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:labnova/core/models/services.dart';
 
+import '../models/condition.dart';
 import '../models/labo.dart';
 
 const etablissments = [
@@ -120,5 +121,102 @@ const List<ServicesModel> services = [
     id: 3,
     name: 'Soins\nà domicile',
     image: 'R3.png',
+  ),
+];
+
+final conditions = [
+  ConditionModel(
+    test: 'FNS',
+    instructions: [
+      "Pas de jeûne nécessaire",
+      "Éviter les excès alimentaires dans les 24 heures précédant le prélèvement"
+    ],
+  ),
+  ConditionModel(
+    test: 'Bilan glycémique',
+    instructions: [
+      "Jeûne obligatoire (8 à 12 heures)",
+      "Ne pas manger ni boire (sauf de l’eau) pendant cette période",
+      "Éviter les boissons sucrées et les jus dans les 24h précédentes",
+      "Test réalisé le matin après une nuit de jeûne"
+    ],
+  ),
+  ConditionModel(
+    test: 'Urée/créatinine',
+    instructions: [
+      "Pas de jeûne strict sauf si combiné à d'autres analyses",
+      "Hydratation normale avant le prélèvement",
+      "Éviter excès ou restriction de liquides",
+      "Éviter repas riches en protéines 24h avant",
+      "Signaler déshydratation ou maladie récente",
+      "Prélèvement souvent le matin"
+    ],
+  ),
+  ConditionModel(
+    test: 'ASAT/ALAT (TGO/TGP)',
+    instructions: [
+      "Jeûne recommandé (8 à 12 heures)",
+      "Jeûne obligatoire si bilan lipidique en même temps",
+      "Éviter repas gras",
+      "Prélèvement souvent le matin"
+    ],
+  ),
+  ConditionModel(
+    test: 'Cholestérol total',
+    instructions: [
+      "Jeûne obligatoire (12 heures)",
+      "Ne pas manger/boire sauf eau",
+      "Alimentation normale avant test",
+      "Ne pas modifier le régime sauf indication médicale",
+      "Prélèvement généralement le matin"
+    ],
+  ),
+  ConditionModel(
+    test: 'LDL / HDL',
+    instructions: [
+      "Jeûne obligatoire (12 heures)",
+      "Éviter excès alimentaires",
+      "Pas de régime sauf indication médicale",
+      "Prélèvement idéalement le matin"
+    ],
+  ),
+  ConditionModel(
+    test: 'VS',
+    instructions: [
+      "Pas de jeûne nécessaire sauf analyses associées",
+      "Bien s’hydrater sauf si jeûne requis",
+      "Prélèvement de préférence le matin"
+    ],
+  ),
+  ConditionModel(
+    test: 'CRP',
+    instructions: [
+      "Pas de jeûne requis sauf autres analyses",
+      "Boire de l’eau sauf si jeûne nécessaire"
+    ],
+  ),
+  ConditionModel(
+    test: 'TP/TCK/Fibrinogène',
+    instructions: [
+      "Pas de jeûne requis sauf autres analyses",
+      "Signaler troubles de la coagulation ou symptômes",
+      "Prélèvement souvent le matin"
+    ],
+  ),
+  ConditionModel(
+    test: 'TSH / T3 / T4',
+    instructions: [
+      "Pas de jeûne requis sauf autres analyses",
+      "Éviter produits riches en iode",
+      "Signaler prises de produits iodés",
+      "Prélèvement idéalement le matin"
+    ],
+  ),
+  ConditionModel(
+    test: 'HbA1c',
+    instructions: [
+      "Aucune préparation requise",
+      "Peut être fait à tout moment de la journée"
+    ],
   ),
 ];

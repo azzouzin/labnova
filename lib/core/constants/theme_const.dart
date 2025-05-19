@@ -66,3 +66,5 @@ String kAuthView = '/auth';
 String kOtpView = '/otp';
 String kCongrats = '/congrats';
 String kLabsView = '/labs';
+String kLabDetailView = '/labdetails';
+String kGetAppointment = '/getAppointment';

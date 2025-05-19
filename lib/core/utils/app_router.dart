@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:labnova/core/models/labo.dart';
+import 'package:labnova/features/appointment/presentation/view/get_appoitment.dart';
+import 'package:labnova/features/appointment/presentation/view_model/cubit/appoitment_cubit.dart';
 import 'package:labnova/features/auth/presentation/view/confirm_otp.dart';
 import 'package:labnova/features/auth/presentation/view/congrats_view.dart';
 import 'package:labnova/features/auth/presentation/view/sign_up_view.dart';
+import 'package:labnova/features/labs/presentation/view/lab_detail.dart';
 import 'package:labnova/features/labs/presentation/view/labs_view.dart';
 import '../../features/home/data/model/book_model.dart';
 import '../../features/home/data/repo/home_repo_impl.dart';
@@ -75,6 +79,25 @@ abstract class AppRouter {
             pageBuilder: (context, state) => CustomTransitionPage(
               key: state.pageKey,
               child: const LabsView(),
+              transitionsBuilder: CustomPageTransitions.slideTransition,
+            ),
+          ),
+          GoRoute(
+            path: kLabDetailView,
+            pageBuilder: (context, state) => CustomTransitionPage(
+              key: state.pageKey,
+              child: LabDetailView(lab: state.extra as LaboModel),
+              transitionsBuilder: CustomPageTransitions.slideTransition,
+            ),
+          ),
+          GoRoute(
+            path: kGetAppointment,
+            pageBuilder: (context, state) => CustomTransitionPage(
+              key: state.pageKey,
+              child: BlocProvider(
+                create: (context) => AppoitmentCubit(),
+                child: GetAppoitmentView(),
+              ),
               transitionsBuilder: CustomPageTransitions.slideTransition,
             ),
           ),
