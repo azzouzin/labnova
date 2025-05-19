@@ -4,5 +4,6 @@ class AssetsData {
   static const String kmainBG = 'assets/images/main_bg.png';
   static const String kCongrats = 'svgs/congrats.svg';
   static const String testImage = 'assets/images/Green_Book.png';
+  static const String rendezVous = 'assets/images/rendez-vous.png';
   static const String fontGT = 'GTSectra';
 }

@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:labnova/core/constants/data_constants.dart';
 import 'package:labnova/core/utils/styles.dart';
 
 import '../../../../core/constants/assets_const.dart';
+import 'widget/home_banner.dart';
+import 'widget/home_header.dart';
+import 'widget/labo_card.dart';
+import 'widget/labs_part.dart';
+import 'widget/our_services.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -25,43 +31,19 @@ class HomeViewBody extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Gap(32),
-            Padding(
-              padding: const EdgeInsets.only(left: 48, right: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ClipOval(
-                    child: Container(
-                      width: 70,
-                      height: 70,
-                      color: Colors.white,
-                      child: Image.asset(AssetsData.logo),
-                    ),
-                  ),
-                  Gap(10),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Bonjour",
-                        style: TextThemes.TextStyle14,
-                      ),
-                      Gap(10),
-                      Text(
-                        "Setifis Tech",
-                        style: TextThemes.TextStyle20,
-                      ),
-                    ],
-                  ),
-                  Spacer(),
-                  Icon(
-                    Icons.notifications,
-                    size: 48,
-                    color: Theme.of(context).colorScheme.primary,
-                  )
-                ],
+            Gap(82),
+            HomeHeader(),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Gap(32),
+                    HomeBanner(size: size),
+                    OurServices(size: size),
+                    Gap(32),
+                    Labs(size: size),
+                  ],
+                ),
               ),
             ),
           ],
