@@ -13,7 +13,21 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _controller = TextEditingController();
-  final List<Message> _messages = [];
+  List<Message> _messages = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _messages = [
+      Message(
+        text:
+            "Bonjour, je suis ${widget.user.name}, infirmier disponible pour votre prélèvement à domicile. À quelle heure préférez-vous que je passe ?",
+        isMe: false,
+        timestamp: DateTime.now(),
+      ),
+    ];
+  }
 
   @override
   void didChangeDependencies() {
