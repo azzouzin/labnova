@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
+import 'package:labnova/core/constants/theme_const.dart';
 import 'package:labnova/core/utils/widgets/custom_button.dart';
 import 'package:labnova/features/appointment/presentation/view_model/cubit/appoitment_cubit.dart';
 
@@ -34,9 +36,12 @@ class GetAppoitmentView extends StatelessWidget {
               Gap(64),
               Row(
                 children: [
-                  Icon(
-                    Icons.arrow_back_ios,
-                    color: Theme.of(context).colorScheme.shadow,
+                  IconButton(
+                    onPressed: GoRouter.of(context).pop,
+                    icon: Icon(
+                      Icons.arrow_back_ios,
+                      color: Theme.of(context).colorScheme.shadow,
+                    ),
                   ),
                   Gap(32),
                   Text(
@@ -102,11 +107,7 @@ class GetAppoitmentView extends StatelessWidget {
                   return CustomButton(
                     onPressed: state is AppoitmentApproved
                         ? () {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text("Conditions approuvées !"),
-                              ),
-                            );
+                            GoRouter.of(context).push(kFrom);
                           }
                         : null,
                     text: "Continuer",

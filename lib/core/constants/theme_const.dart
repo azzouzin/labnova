@@ -68,3 +68,6 @@ String kCongrats = '/congrats';
 String kLabsView = '/labs';
 String kLabDetailView = '/labdetails';
 String kGetAppointment = '/getAppointment';
+String kFrom = '/from';
+String kChatScreen = '/chat';
+String kWorkers = '/workers';

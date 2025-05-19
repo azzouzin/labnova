@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
+import 'package:labnova/core/constants/theme_const.dart';
 
 import '../../../../../core/constants/assets_const.dart';
 import '../../../../../core/utils/styles.dart';
@@ -56,7 +58,9 @@ class HomeBanner extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 0)),
-            onPressed: () {},
+            onPressed: () {
+              GoRouter.of(context).push(kGetAppointment);
+            },
             child: Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,

@@ -17,7 +17,7 @@ class LaboCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: ()=> GoRouter.of(context).push(kLabDetailView, extra: laboModel),
+      onTap: () => GoRouter.of(context).push(kLabDetailView, extra: laboModel),
       child: Card(
         color: Colors.white,
         child: Row(
@@ -65,7 +65,7 @@ class LaboCard extends StatelessWidget {
                       ),
                       Gap(5),
                       Text(
-                        "Alger",
+                        "Sidi Bel Abbes",
                         style: TextThemes.TextStyle16.copyWith(
                           color: Theme.of(context).shadowColor,
                         ),

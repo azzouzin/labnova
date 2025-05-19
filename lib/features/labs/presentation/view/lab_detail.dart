@@ -42,9 +42,12 @@ class LabDetailView extends StatelessWidget {
                 Gap(64),
                 Row(
                   children: [
-                    Icon(
-                      Icons.arrow_back_ios,
-                      color: Theme.of(context).colorScheme.shadow,
+                    IconButton(
+                      onPressed: GoRouter.of(context).pop,
+                      icon: Icon(
+                        Icons.arrow_back_ios,
+                        color: Theme.of(context).colorScheme.shadow,
+                      ),
                     ),
                     Gap(32),
                     Text(

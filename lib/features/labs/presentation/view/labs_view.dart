@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:labnova/core/constants/data_constants.dart';
 import 'package:labnova/core/utils/widgets/custom_text_field.dart';
 import 'package:labnova/features/home/presentation/view/widget/labo_card.dart';
@@ -32,9 +33,12 @@ class LabsView extends StatelessWidget {
               Gap(64),
               Row(
                 children: [
-                  Icon(
-                    Icons.arrow_back_ios,
-                    color: Theme.of(context).colorScheme.shadow,
+                  IconButton(
+                    onPressed: GoRouter.of(context).pop,
+                    icon: Icon(
+                      Icons.arrow_back_ios,
+                      color: Theme.of(context).colorScheme.shadow,
+                    ),
                   ),
                   Gap(32),
                   Text(

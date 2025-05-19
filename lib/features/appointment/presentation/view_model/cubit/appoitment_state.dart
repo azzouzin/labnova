@@ -10,3 +10,5 @@ sealed class AppoitmentState extends Equatable {
 final class AppoitmentApproved extends AppoitmentState {}
 
 final class AppoitmentRejected extends AppoitmentState {}
+
+final class AppoitmentLoading extends AppoitmentState {}

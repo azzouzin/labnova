@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:labnova/core/models/labo.dart';
+import 'package:labnova/features/appointment/presentation/view/appointment_form.dart';
 import 'package:labnova/features/appointment/presentation/view/get_appoitment.dart';
 import 'package:labnova/features/appointment/presentation/view_model/cubit/appoitment_cubit.dart';
 import 'package:labnova/features/auth/presentation/view/confirm_otp.dart';
@@ -9,6 +10,8 @@ import 'package:labnova/features/auth/presentation/view/congrats_view.dart';
 import 'package:labnova/features/auth/presentation/view/sign_up_view.dart';
 import 'package:labnova/features/labs/presentation/view/lab_detail.dart';
 import 'package:labnova/features/labs/presentation/view/labs_view.dart';
+import 'package:labnova/features/workers/presentation/view/chat_view.dart';
+import 'package:labnova/features/workers/presentation/view/workers_view.dart';
 import '../../features/home/data/model/book_model.dart';
 import '../../features/home/data/repo/home_repo_impl.dart';
 import '../../features/home/presentation/view/home_view.dart';
@@ -16,6 +19,7 @@ import '../../features/home/presentation/view_models/simmilair_books/simmilair_b
 
 import '../../features/splash/presentation/view/splash_view.dart';
 import '../constants/theme_const.dart';
+import '../models/user.dart';
 import 'api_service.dart';
 import 'custom_page_transitions.dart';
 import 'service_locator.dart';
@@ -97,6 +101,41 @@ abstract class AppRouter {
               child: BlocProvider(
                 create: (context) => AppoitmentCubit(),
                 child: GetAppoitmentView(),
+              ),
+              transitionsBuilder: CustomPageTransitions.slideTransition,
+            ),
+          ),
+          GoRoute(
+            path: kFrom,
+            pageBuilder: (context, state) => CustomTransitionPage(
+              key: state.pageKey,
+              child: BlocProvider(
+                create: (context) => AppoitmentCubit(),
+                child: AppointmentFrom(),
+              ),
+              transitionsBuilder: CustomPageTransitions.slideTransition,
+            ),
+          ),
+          GoRoute(
+            path: kWorkers,
+            pageBuilder: (context, state) => CustomTransitionPage(
+              key: state.pageKey,
+              child: BlocProvider(
+                create: (context) => AppoitmentCubit(),
+                child: WorkersView(),
+              ),
+              transitionsBuilder: CustomPageTransitions.slideTransition,
+            ),
+          ),
+          GoRoute(
+            path: kChatScreen,
+            pageBuilder: (context, state) => CustomTransitionPage(
+              key: state.pageKey,
+              child: BlocProvider(
+                create: (context) => AppoitmentCubit(),
+                child: ChatScreen(
+                  user: state.extra as User,
+                ),
               ),
               transitionsBuilder: CustomPageTransitions.slideTransition,
             ),
