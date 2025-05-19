@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:labnova/features/auth/presentation/view/confirm_otp.dart';
 import 'package:labnova/features/auth/presentation/view/congrats_view.dart';
 import 'package:labnova/features/auth/presentation/view/sign_up_view.dart';
+import 'package:labnova/features/labs/presentation/view/labs_view.dart';
 import '../../features/home/data/model/book_model.dart';
 import '../../features/home/data/repo/home_repo_impl.dart';
 import '../../features/home/presentation/view/home_view.dart';
@@ -66,6 +67,14 @@ abstract class AppRouter {
             pageBuilder: (context, state) => CustomTransitionPage(
               key: state.pageKey,
               child: const CongratsView(),
+              transitionsBuilder: CustomPageTransitions.slideTransition,
+            ),
+          ),
+          GoRoute(
+            path: kLabsView,
+            pageBuilder: (context, state) => CustomTransitionPage(
+              key: state.pageKey,
+              child: const LabsView(),
               transitionsBuilder: CustomPageTransitions.slideTransition,
             ),
           ),
