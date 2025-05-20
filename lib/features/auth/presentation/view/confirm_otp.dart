@@ -16,6 +16,7 @@ class ConfirmOtp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final enterPhoneView = EnterPhoneView(size: size);
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -27,18 +28,20 @@ class ConfirmOtp extends StatelessWidget {
           ),
         ),
         child: BlocProvider<AuthCubit>(
-            create: (context) => AuthCubit(),
-            child: BlocBuilder<AuthCubit, AuthState>(builder: (context, state) {
+          create: (context) => AuthCubit(),
+          child: BlocBuilder<AuthCubit, AuthState>(
+            builder: (context, state) {
               switch (state) {
                 case AuthEnterOTP():
                   return EnterOtpView(size: size);
                 case AuthEnterPhone():
-                  return EnterPhoneView(size: size);
-
+                  return enterPhoneView;
                 default:
-                  return EnterPhoneView(size: size);
+                  return enterPhoneView;
               }
-            })),
+            },
+          ),
+        ),
       ),
     );
   }

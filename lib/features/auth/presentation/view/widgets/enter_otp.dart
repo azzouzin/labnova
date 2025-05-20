@@ -19,7 +19,7 @@ class EnterOtpView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Gap(size.height * 0.05),
+        Gap(size.height * 0.07),
         Row(
           children: [
             IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),

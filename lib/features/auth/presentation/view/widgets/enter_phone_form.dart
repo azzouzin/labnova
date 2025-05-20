@@ -7,7 +7,7 @@ import '../../../../../core/utils/styles.dart';
 import '../../../../../core/utils/widgets/custom_button.dart';
 import '../../../../../core/utils/widgets/custom_text_field.dart';
 
-class EnterPhoneView extends StatelessWidget {
+class EnterPhoneView extends StatefulWidget {
   const EnterPhoneView({
     super.key,
     required this.size,
@@ -16,10 +16,29 @@ class EnterPhoneView extends StatelessWidget {
   final Size size;
 
   @override
+  State<EnterPhoneView> createState() => _EnterPhoneViewState();
+}
+
+class _EnterPhoneViewState extends State<EnterPhoneView> {
+  late final TextEditingController phoneController;
+
+  @override
+  void initState() {
+    super.initState();
+    phoneController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    phoneController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Gap(size.height * 0.05),
+        Gap(widget.size.height * 0.07),
         Row(
           children: [
             IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
@@ -43,18 +62,19 @@ class EnterPhoneView extends StatelessWidget {
                   color: Theme.of(context).colorScheme.shadow,
                 ),
               ),
-              Gap(8),
+              Gap(10),
               CustomTextField(
-                controller: TextEditingController(),
+                controller: phoneController,
                 hintText: '+213 654 789 01',
                 labelText: 'Num Téléphone',
               ),
               Gap(128),
               CustomButton(
-                  onPressed: () {
-                    BlocProvider.of<AuthCubit>(context).switchOTP();
-                  },
-                  text: "Confimer")
+                onPressed: () {
+                  BlocProvider.of<AuthCubit>(context).switchOTP();
+                },
+                text: "Confimer",
+              ),
             ],
           ),
         ),

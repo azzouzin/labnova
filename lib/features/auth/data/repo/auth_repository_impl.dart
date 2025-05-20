@@ -9,7 +9,9 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<void> signInWithEmail(String email, String password) async {
     await _firebaseAuth.signInWithEmailAndPassword(
-        email: email, password: password);
+      email: email,
+      password: password,
+    );
   }
 
   @override
@@ -18,7 +20,10 @@ class AuthRepositoryImpl implements AuthRepository {
     final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
         email: email, password: password);
     await saveUserProfile(
-        uid: userCredential.user!.uid, name: name, email: email);
+      uid: userCredential.user!.uid,
+      name: name,
+      email: email,
+    );
   }
 
   @override

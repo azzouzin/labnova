@@ -25,6 +25,7 @@ class SingUpForm extends StatelessWidget {
         if (state is AuthAuthenticated) {
           GoRouter.of(context).push(kHomeView);
         } else if (state is AuthError) {
+          print(state.message);
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.message)),
           );
@@ -32,87 +33,85 @@ class SingUpForm extends StatelessWidget {
       },
       child: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Form(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            spacing: 20,
-            children: [
-              CustomTextField(
-                controller: nameController,
-                hintText: 'Nom',
-                labelText: 'Nom',
-                keyboardType: TextInputType.text,
-              ),
-              CustomTextField(
-                controller: emailController,
-                hintText: 'Email',
-                labelText: 'Email',
-                keyboardType: TextInputType.emailAddress,
-              ),
-              CustomTextField(
-                controller: passwordController,
-                hintText: 'Mot de passe',
-                labelText: 'Mot de passe',
-                keyboardType: TextInputType.text,
-                obscureText: true,
-              ),
-              CustomTextField(
-                controller: confirmPasswordController,
-                hintText: 'Confirm Mot de passe',
-                labelText: 'Confirm Mot de passe',
-                keyboardType: TextInputType.text,
-                obscureText: true,
-              ),
-              Text(
-                "Mot de pass doit contenure au moins  8 entre des  characteres et chiffres",
-                style: TextThemes.TextStyle14,
-              ),
-              Gap(10),
-              BlocBuilder<AuthCubit, AuthState>(
-                builder: (context, state) {
-                  return CustomButton(
-                    onPressed: state is AuthLoading
-                        ? null
-                        : () {
-                            if (passwordController.text.trim() !=
-                                confirmPasswordController.text.trim()) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                    content: Text("Passwords do not match")),
-                              );
-                              return;
-                            }
-                            BlocProvider.of<AuthCubit>(context).signUp(
-                                emailController.text.trim(),
-                                passwordController.text.trim(),
-                                nameController.text.trim(),
-                                context);
-                          },
-                    text: state is AuthLoading ? 'Loading...' : "S'inscrire",
-                  );
-                },
-              ),
-              Column(
-                children: [
-                  Text(
-                    "Vous avez deja un compte ?",
-                    style: TextThemes.TextStyle14,
-                  ),
-                  GestureDetector(
-                    child: Text(
-                      "Se connecter",
-                      style: TextThemes.TextStyle14.copyWith(
-                        decoration: TextDecoration.underline,
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          spacing: 20,
+          children: [
+            CustomTextField(
+              controller: nameController,
+              hintText: 'Nom',
+              labelText: 'Nom',
+              keyboardType: TextInputType.text,
+            ),
+            CustomTextField(
+              controller: emailController,
+              hintText: 'Email',
+              labelText: 'Email',
+              keyboardType: TextInputType.emailAddress,
+            ),
+            CustomTextField(
+              controller: passwordController,
+              hintText: 'Mot de passe',
+              labelText: 'Mot de passe',
+              keyboardType: TextInputType.text,
+              obscureText: true,
+            ),
+            CustomTextField(
+              controller: confirmPasswordController,
+              hintText: 'Confirm Mot de passe',
+              labelText: 'Confirm Mot de passe',
+              keyboardType: TextInputType.text,
+              obscureText: true,
+            ),
+            Text(
+              "Mot de pass doit contenure au moins  8 entre des  characteres et chiffres",
+              style: TextThemes.TextStyle14,
+            ),
+            Gap(10),
+            BlocBuilder<AuthCubit, AuthState>(
+              builder: (context, state) {
+                return CustomButton(
+                  onPressed: state is AuthLoading
+                      ? null
+                      : () {
+                          if (passwordController.text.trim() !=
+                              confirmPasswordController.text.trim()) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                  content: Text("Passwords do not match")),
+                            );
+                            return;
+                          }
+                          BlocProvider.of<AuthCubit>(context).signUp(
+                              emailController.text.trim(),
+                              passwordController.text.trim(),
+                              nameController.text.trim(),
+                              context);
+                        },
+                  text: state is AuthLoading ? 'Loading...' : "S'inscrire",
+                );
+              },
+            ),
+            Column(
+              children: [
+                Text(
+                  "Vous avez deja un compte ?",
+                  style: TextThemes.TextStyle14,
+                ),
+                GestureDetector(
+                  child: Text(
+                    "Se connecter",
+                    style: TextThemes.TextStyle14.copyWith(
+                      decoration: TextDecoration.underline,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
-                    onTap: () =>
-                        BlocProvider.of<AuthCubit>(context).switchState(),
                   ),
-                ],
-              )
-            ],
-          ),
+                  onTap: () =>
+                      BlocProvider.of<AuthCubit>(context).switchState(),
+                ),
+              ],
+            )
+          ],
         ),
       ),
     );

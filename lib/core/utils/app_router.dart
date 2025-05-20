@@ -58,7 +58,7 @@ abstract class AppRouter {
             path: kAuthView,
             pageBuilder: (context, state) => CustomTransitionPage(
               key: state.pageKey,
-              child: const SignUpView(),
+              child: SignUpView(),
               transitionsBuilder: CustomPageTransitions.slideTransition,
             ),
           ),

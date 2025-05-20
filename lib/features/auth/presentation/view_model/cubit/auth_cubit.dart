@@ -48,7 +48,6 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       await authRepository.signUpWithEmail(email, password, name);
       emit(AuthEnterPhone());
-      GoRouter.of(context).push(kOtpView);
     } catch (e) {
       emit(AuthError(e.toString()));
     }
