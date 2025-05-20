@@ -43,7 +43,7 @@ class Labs extends StatelessWidget {
           Gap(20),
           LaboCard(laboModel: etablissments.first),
           Gap(20),
-          LaboCard(laboModel: etablissments.first),
+          LaboCard(laboModel: etablissments[1]),
           Gap(20),
         ],
       ),

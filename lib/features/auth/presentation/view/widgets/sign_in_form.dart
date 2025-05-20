@@ -6,6 +6,7 @@ import 'package:labnova/core/utils/widgets/custom_button.dart';
 
 import '../../../../../core/constants/theme_const.dart';
 import '../../../../../core/utils/styles.dart';
+import '../../../../../core/utils/widgets/custom_error_widget.dart';
 import '../../../../../core/utils/widgets/custom_text_field.dart';
 import '../../view_model/cubit/auth_cubit.dart';
 
@@ -21,6 +22,7 @@ class SignInForm extends StatelessWidget {
       listener: (context, state) {
         if (state is AuthAuthenticated) {
           GoRouter.of(context).push(kHomeView);
+          CustomMessengers.showseccessSnackBar("Soyez Bienvenu ", context);
         } else if (state is AuthError) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.message)),
@@ -66,9 +68,9 @@ class SignInForm extends StatelessWidget {
                         ? null
                         : () {
                             BlocProvider.of<AuthCubit>(context).signIn(
-                              emailController.text.trim(),
-                              passwordController.text.trim(),
-                            );
+                                emailController.text.trim(),
+                                passwordController.text.trim(),
+                                context);
                           },
                     text: state is AuthLoading ? 'Loading...' : "Se connecter",
                   );

@@ -117,7 +117,9 @@ class _SplashViewBodyState extends State<SplashViewBody>
                   ),
                 ),
                 const SizedBox(height: 32),
-                const CustomLoadingWidget(),
+                CustomLoadingWidget(
+                  color: Colors.white,
+                ),
               ],
             ),
           );

@@ -6,6 +6,7 @@ import 'package:labnova/features/auth/data/repo/auth_repository_impl.dart';
 
 import '../../../../../core/constants/theme_const.dart';
 import '../../../../../core/models/user.dart';
+import '../../../../../core/utils/widgets/custom_error_widget.dart';
 
 part 'auth_state.dart';
 
@@ -34,13 +35,15 @@ class AuthCubit extends Cubit<AuthState> {
     GoRouter.of(context).push(kAuthView);
   }
 
-  Future<void> signIn(String email, String password) async {
+  Future<void> signIn(
+      String email, String password, BuildContext context) async {
     emit(AuthLoading());
     try {
       final userCredential =
           await authRepository.signInWithEmail(email, password);
       final userModel =
           await authRepository.getUserProfile(userCredential.user!.uid);
+
       emit(AuthAuthenticated(userModel!));
     } catch (e) {
       print(e.toString());
@@ -57,6 +60,7 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthLoading());
     try {
       await authRepository.signUpWithEmail(email, password, name);
+      CustomMessengers.showseccessSnackBar("User Created", context);
       emit(AuthEnterPhone());
     } catch (e) {
       emit(AuthError(e.toString()));

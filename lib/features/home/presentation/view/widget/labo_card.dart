@@ -39,13 +39,11 @@ class LaboCard extends StatelessWidget {
                       SizedBox(
                         height: 30,
                         width: 200,
-                        child: Expanded(
-                          child: Text(
-                            laboModel.name,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextThemes.TextStyle16.copyWith(
-                                color: Theme.of(context).shadowColor),
-                          ),
+                        child: Text(
+                          laboModel.name,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextThemes.TextStyle16.copyWith(
+                              color: Theme.of(context).shadowColor),
                         ),
                       ),
                       Spacer(),
