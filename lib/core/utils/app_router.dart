@@ -33,12 +33,12 @@ abstract class AppRouter {
         builder: (context, state, child) {
           return MultiBlocProvider(
             providers: [
-              BlocProvider(
+              BlocProvider<HomeCubit>(
                 create: (context) => HomeCubit(
                   getIt.get<HomeRepoImpl>(),
                 ),
               ),
-              BlocProvider(
+              BlocProvider<AuthCubit>(
                 create: (context) => AuthCubit(),
               ),
             ],

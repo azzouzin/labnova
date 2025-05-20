@@ -21,7 +21,10 @@ final class AuthLoading extends AuthState {}
 
 class AuthInitial extends AuthState {}
 
-class AuthAuthenticated extends AuthState {}
+class AuthAuthenticated extends AuthState {
+  final User user;
+  AuthAuthenticated(this.user);
+}
 
 class AuthError extends AuthState {
   final String message;

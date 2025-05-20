@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import '../../../../core/models/user.dart' as usermodel;
 import 'auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
@@ -8,7 +10,7 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<UserCredential> signInWithEmail(String email, String password) async {
-   return await _firebaseAuth.signInWithEmailAndPassword(
+    return await _firebaseAuth.signInWithEmailAndPassword(
       email: email,
       password: password,
     );
@@ -54,8 +56,8 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Map<String, dynamic>?> getUserProfile(String uid) async {
+  Future<usermodel.User?> getUserProfile(String uid) async {
     final doc = await _firestore.collection('users').doc(uid).get();
-    return doc.exists ? doc.data() : null;
+    return doc.exists ? usermodel.User.fromMap(doc.data()!) : null;
   }
 }

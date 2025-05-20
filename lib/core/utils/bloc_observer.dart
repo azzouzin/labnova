@@ -24,4 +24,16 @@ class SimpleBlocObserver extends BlocObserver {
     print('onError: $error in $bloc');
     super.onError(bloc, error, stackTrace);
   }
+
+  @override
+  void onClose(BlocBase bloc) {
+    super.onClose(bloc);
+    print('onClose: $bloc');
+  }
+
+  @override
+  void onCreate(BlocBase bloc) {
+    super.onCreate(bloc);
+    print('onCreate: $bloc');
+  }
 }

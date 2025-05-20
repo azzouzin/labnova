@@ -39,11 +39,9 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       final userCredential =
           await authRepository.signInWithEmail(email, password);
-      final userMap =
+      final userModel =
           await authRepository.getUserProfile(userCredential.user!.uid);
-      userModel = User.fromMap(userMap!);
-      print(userModel!.toMap());
-      emit(AuthAuthenticated());
+      emit(AuthAuthenticated(userModel!));
     } catch (e) {
       print(e.toString());
       emit(
@@ -79,13 +77,30 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthLoading());
     try {
       final isSignedIn = await authRepository.isSignedIn();
+
       if (isSignedIn) {
-        emit(AuthAuthenticated());
+        userModel = await authRepository.getUserProfile(
+          (await authRepository.getCurrentUserId())!,
+        );
+        emit(
+          AuthAuthenticated(userModel!),
+        );
       } else {
         emit(AuthInitial());
       }
     } catch (e) {
-      emit(AuthError(e.toString()));
+      emit(
+        AuthError(
+          e.toString(),
+        ),
+      );
     }
+  }
+
+  Future<String?> getUserName() async {
+    return (await authRepository.getUserProfile(
+      (await authRepository.getCurrentUserId())!,
+    ))!
+        .name;
   }
 }

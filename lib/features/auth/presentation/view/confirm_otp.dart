@@ -27,20 +27,17 @@ class ConfirmOtp extends StatelessWidget {
             fit: BoxFit.fill,
           ),
         ),
-        child: BlocProvider<AuthCubit>(
-          create: (context) => AuthCubit(),
-          child: BlocBuilder<AuthCubit, AuthState>(
-            builder: (context, state) {
-              switch (state) {
-                case AuthEnterOTP():
-                  return EnterOtpView(size: size);
-                case AuthEnterPhone():
-                  return enterPhoneView;
-                default:
-                  return enterPhoneView;
-              }
-            },
-          ),
+        child: BlocBuilder<AuthCubit, AuthState>(
+          builder: (context, state) {
+            switch (state) {
+              case AuthEnterOTP():
+                return EnterOtpView(size: size);
+              case AuthEnterPhone():
+                return enterPhoneView;
+              default:
+                return enterPhoneView;
+            }
+          },
         ),
       ),
     );

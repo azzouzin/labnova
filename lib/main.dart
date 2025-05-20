@@ -8,7 +8,6 @@ import 'core/utils/bloc_observer.dart';
 import 'core/utils/service_locator.dart';
 import 'features/auth/presentation/view_model/cubit/auth_cubit.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = SimpleBlocObserver();
@@ -22,13 +21,10 @@ class LabNovaApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => AuthCubit(),
-      child: MaterialApp.router(
-        debugShowCheckedModeBanner: false,
-        routerConfig: AppRouter.router,
-        theme: AppTheme.lightTheme,
-      ),
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      routerConfig: AppRouter.router,
+      theme: AppTheme.lightTheme,
     );
   }
 }

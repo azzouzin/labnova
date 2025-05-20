@@ -33,7 +33,7 @@ class _AppointmentFromState extends State<AppointmentFrom> {
   String? additionalObservations;
   String? pregnancyStatus;
 
-  void _submitForm() {
+  void _submitForm() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       // Handle form submission (e.g., send data to server or display summary)
@@ -46,6 +46,7 @@ class _AppointmentFromState extends State<AppointmentFrom> {
       print('Current Medications: $currentMedications');
       print('Additional Observations: $additionalObservations');
       print('Pregnancy Status: $pregnancyStatus');
+      print('User: ${await BlocProvider.of<AuthCubit>(context).getUserName()}');
 
       final QuestionnaireModel appointment = QuestionnaireModel(
         reasonForVisit: reasonForVisit,
