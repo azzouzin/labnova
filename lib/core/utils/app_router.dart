@@ -8,6 +8,7 @@ import 'package:labnova/features/appointment/presentation/view_model/cubit/appoi
 import 'package:labnova/features/auth/presentation/view/confirm_otp.dart';
 import 'package:labnova/features/auth/presentation/view/congrats_view.dart';
 import 'package:labnova/features/auth/presentation/view/sign_up_view.dart';
+import 'package:labnova/features/auth/presentation/view_model/cubit/auth_cubit.dart';
 import 'package:labnova/features/labs/presentation/view/lab_detail.dart';
 import 'package:labnova/features/labs/presentation/view/labs_view.dart';
 import 'package:labnova/features/workers/presentation/view/chat_view.dart';
@@ -36,6 +37,9 @@ abstract class AppRouter {
                 create: (context) => HomeCubit(
                   getIt.get<HomeRepoImpl>(),
                 ),
+              ),
+              BlocProvider(
+                create: (context) => AuthCubit(),
               ),
             ],
             child: child,
@@ -100,7 +104,9 @@ abstract class AppRouter {
               key: state.pageKey,
               child: BlocProvider(
                 create: (context) => AppoitmentCubit(),
-                child: GetAppoitmentView(),
+                child: GetAppoitmentView(
+                  laboModel: state.extra as LaboModel,
+                ),
               ),
               transitionsBuilder: CustomPageTransitions.slideTransition,
             ),
@@ -111,7 +117,9 @@ abstract class AppRouter {
               key: state.pageKey,
               child: BlocProvider(
                 create: (context) => AppoitmentCubit(),
-                child: AppointmentFrom(),
+                child: AppointmentFrom(
+                  laboModel: state.extra as LaboModel,
+                ),
               ),
               transitionsBuilder: CustomPageTransitions.slideTransition,
             ),

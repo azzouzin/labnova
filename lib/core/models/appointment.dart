@@ -1,4 +1,6 @@
 class QuestionnaireModel {
+  final String laboName;
+  final String clientName;
   final String? reasonForVisit;
   final String? reasonForVisitOther;
   final List<String> currentSymptoms;
@@ -14,6 +16,8 @@ class QuestionnaireModel {
     required this.reasonForVisit,
     this.reasonForVisitOther,
     required this.currentSymptoms,
+    required this.laboName,
+    required this.clientName,
     required this.symptomDuration,
     required this.hasMedicalHistory,
     required this.medicalHistories,
@@ -26,6 +30,8 @@ class QuestionnaireModel {
   factory QuestionnaireModel.fromJson(Map<String, dynamic> json) {
     return QuestionnaireModel(
       reasonForVisit: json['reasonForVisit'],
+      laboName: json['laboName'],
+      clientName: json['clientName'],
       reasonForVisitOther: json['reasonForVisitOther'],
       currentSymptoms: List<String>.from(json['currentSymptoms']),
       symptomDuration: json['symptomDuration'],
@@ -41,6 +47,8 @@ class QuestionnaireModel {
   Map<String, dynamic> toJson() {
     return {
       'reasonForVisit': reasonForVisit,
+      'laboName': laboName,
+      'clientName': clientName,
       'reasonForVisitOther': reasonForVisitOther,
       'currentSymptoms': currentSymptoms,
       'symptomDuration': symptomDuration,

@@ -48,7 +48,7 @@ class WorkersView extends StatelessWidget {
                 child: Row(
                   children: [
                     CircleAvatar(
-                      backgroundImage: NetworkImage(user.avatarUrl),
+                      backgroundImage: NetworkImage(user.avatarUrl ?? ''),
                       radius: 26,
                     ),
                     SizedBox(width: 16),
@@ -57,7 +57,7 @@ class WorkersView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            user.name,
+                            user.name ?? '',
                             style: Theme.of(context)
                                 .textTheme
                                 .titleMedium

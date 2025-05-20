@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:labnova/core/constants/theme_const.dart';
 
 import '../../../../../core/constants/assets_const.dart';
+import '../../../../../core/constants/data_constants.dart';
 import '../../../../../core/utils/styles.dart';
 
 class HomeBanner extends StatelessWidget {
@@ -59,7 +60,10 @@ class HomeBanner extends StatelessWidget {
                 ),
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 0)),
             onPressed: () {
-              GoRouter.of(context).push(kGetAppointment);
+              GoRouter.of(context).push(
+                kGetAppointment,
+                extra: etablissments.first,
+              );
             },
             child: Row(
               mainAxisSize: MainAxisSize.min,

@@ -72,6 +72,12 @@ class _EnterPhoneViewState extends State<EnterPhoneView> {
               CustomButton(
                 onPressed: () {
                   BlocProvider.of<AuthCubit>(context).switchOTP();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Your OTP code is: 123456'),
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                    ),
+                  );
                 },
                 text: "Confimer",
               ),

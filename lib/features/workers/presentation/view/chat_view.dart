@@ -72,10 +72,10 @@ class _ChatScreenState extends State<ChatScreen> {
         title: Row(
           children: [
             CircleAvatar(
-              backgroundImage: NetworkImage(widget.user.avatarUrl),
+              backgroundImage: NetworkImage(widget.user.avatarUrl?? ''),
             ),
             SizedBox(width: 8),
-            Text(widget.user.name,
+            Text(widget.user.name ?? '',
                 style: theme.textTheme.titleMedium
                     ?.copyWith(color: theme.colorScheme.onPrimary)),
           ],

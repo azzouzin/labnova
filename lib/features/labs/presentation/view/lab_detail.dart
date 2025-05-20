@@ -115,7 +115,7 @@ class LabDetailView extends StatelessWidget {
                 Gap(32),
                 CustomButton(
                   onPressed: () {
-                    GoRouter.of(context).push(kGetAppointment);
+                    GoRouter.of(context).push(kGetAppointment,extra: lab);
                   },
                   text: "Prenez Rendez-Vous",
                 ),

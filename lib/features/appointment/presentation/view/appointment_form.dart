@@ -1,10 +1,21 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:labnova/core/models/appointment.dart';
+import 'package:labnova/core/models/labo.dart';
+import 'package:labnova/core/models/user.dart';
 import 'package:labnova/core/utils/widgets/custom_button.dart';
+import 'package:labnova/features/auth/presentation/view_model/cubit/auth_cubit.dart';
 
 import '../../../../core/constants/assets_const.dart';
 
 class AppointmentFrom extends StatefulWidget {
+  LaboModel laboModel;
+  AppointmentFrom({
+    Key? key,
+    required this.laboModel,
+  }) : super(key: key);
   @override
   _AppointmentFromState createState() => _AppointmentFromState();
 }
@@ -46,6 +57,9 @@ class _AppointmentFromState extends State<AppointmentFrom> {
         currentMedications: currentMedications,
         additionalObservations: additionalObservations,
         pregnancyStatus: pregnancyStatus,
+        laboName: widget.laboModel.name,
+        clientName:
+            BlocProvider.of<AuthCubit>(context).userModel?.name ?? "Null",
       );
     }
   }
@@ -53,7 +67,6 @@ class _AppointmentFromState extends State<AppointmentFrom> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,

@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:labnova/features/auth/data/repo/auth_repository_impl.dart';
 
 import '../../../../../core/constants/theme_const.dart';
+import '../../../../../core/models/user.dart';
 
 part 'auth_state.dart';
 
@@ -12,6 +13,7 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthSignUp());
 
   AuthRepositoryImpl authRepository = AuthRepositoryImpl();
+  User? userModel;
 
   void switchState() {
     if (state is AuthSignUp) {
@@ -35,10 +37,20 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> signIn(String email, String password) async {
     emit(AuthLoading());
     try {
-      await authRepository.signInWithEmail(email, password);
+      final userCredential =
+          await authRepository.signInWithEmail(email, password);
+      final userMap =
+          await authRepository.getUserProfile(userCredential.user!.uid);
+      userModel = User.fromMap(userMap!);
+      print(userModel!.toMap());
       emit(AuthAuthenticated());
     } catch (e) {
-      emit(AuthError(e.toString()));
+      print(e.toString());
+      emit(
+        AuthError(
+          e.toString(),
+        ),
+      );
     }
   }
 

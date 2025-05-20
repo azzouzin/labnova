@@ -7,8 +7,8 @@ class AuthRepositoryImpl implements AuthRepository {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   @override
-  Future<void> signInWithEmail(String email, String password) async {
-    await _firebaseAuth.signInWithEmailAndPassword(
+  Future<UserCredential> signInWithEmail(String email, String password) async {
+   return await _firebaseAuth.signInWithEmailAndPassword(
       email: email,
       password: password,
     );

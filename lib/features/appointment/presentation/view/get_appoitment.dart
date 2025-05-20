@@ -1,17 +1,27 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+
 import 'package:labnova/core/constants/theme_const.dart';
 import 'package:labnova/core/utils/widgets/custom_button.dart';
 import 'package:labnova/features/appointment/presentation/view_model/cubit/appoitment_cubit.dart';
+import 'package:labnova/features/auth/presentation/view_model/cubit/auth_cubit.dart';
 
 import '../../../../core/constants/assets_const.dart';
 import '../../../../core/constants/data_constants.dart';
+import '../../../../core/models/labo.dart';
+import '../../../../core/models/user.dart';
 import '../../../../core/utils/styles.dart';
 
 class GetAppoitmentView extends StatelessWidget {
-  bool _isApproved = false;
+  GetAppoitmentView({
+    Key? key,
+    required this.laboModel,
+  }) : super(key: key);
+
+  final LaboModel laboModel;
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +117,10 @@ class GetAppoitmentView extends StatelessWidget {
                   return CustomButton(
                     onPressed: state is AppoitmentApproved
                         ? () {
-                            GoRouter.of(context).push(kFrom);
+                            GoRouter.of(context).push(
+                              kFrom,
+                              extra: laboModel,
+                            );
                           }
                         : null,
                     text: "Continuer",
