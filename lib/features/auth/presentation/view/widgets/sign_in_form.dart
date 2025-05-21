@@ -21,11 +21,15 @@ class SignInForm extends StatelessWidget {
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is AuthAuthenticated) {
-          GoRouter.of(context).push(kHomeView);
-          CustomMessengers.showseccessSnackBar("Soyez Bienvenu ", context);
+          //  CustomMessengers.showseccessSnackBar("Soyez Bienvenu ", context);
+          Future.delayed(Duration(seconds: 3)).then(
+            (value) => GoRouter.of(context).push(kHomeView),
+          );
         } else if (state is AuthError) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.message)),
+            SnackBar(
+              content: Text(state.message),
+            ),
           );
         }
       },

@@ -74,7 +74,7 @@ class _EnterPhoneViewState extends State<EnterPhoneView> {
                   BlocProvider.of<AuthCubit>(context).switchOTP();
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text('Your OTP code is: 123456'),
+                      content: Text('Your OTP code is: 12345'),
                       backgroundColor: Theme.of(context).colorScheme.primary,
                     ),
                   );

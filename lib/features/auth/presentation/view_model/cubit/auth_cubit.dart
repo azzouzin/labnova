@@ -60,7 +60,6 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthLoading());
     try {
       await authRepository.signUpWithEmail(email, password, name);
-      CustomMessengers.showseccessSnackBar("User Created", context);
       emit(AuthEnterPhone());
     } catch (e) {
       emit(AuthError(e.toString()));
